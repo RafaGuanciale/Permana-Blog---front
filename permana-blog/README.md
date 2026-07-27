@@ -1,75 +1,94 @@
-# React + TypeScript + Vite
+# Permana Blog — Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Sobre o projeto
 
-Currently, two official plugins are available:
+**Permana Blog** é o blog editorial da plataforma Permana, um espaço para
+conteúdos sobre perfumaria, cultura olfativa e bastidores do projeto. Foi
+construído como uma aplicação **full-stack em TypeScript**, com o objetivo de
+demonstrar tipagem de ponta a ponta: do banco de dados até a interface.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Este repositório contém o **frontend** em React + TypeScript, que consome uma
+**API própria** (em repositório separado) construída em Node.js + Express +
+PostgreSQL. O escopo de conteúdo é enxuto de propósito, pois o foco do projeto está
+na arquitetura, na tipagem e na integração entre serviços.
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Links
 
-## Expanding the ESLint configuration
+- **Frontend (Vercel):** https://permana-blog-front.vercel.app/
+- **API (Render):** https://permana-blog-back.onrender.com
+- **Repositório do backend:** https://github.com/RafaGuanciale/Permana-Blog---Back
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Funcionalidades
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- **Listagem de posts** — todas as notas publicadas, ordenadas pela API do mais recente ao mais antigo
+- **Post em destaque** — a nota mais recente ganha posição de destaque no topo, com fundo visual por categoria
+- **Filtro por categoria** — navegação entre as categorias do blog (Guias, Lançamentos, Cultura, Permana)
+- **Estados de vazio** — telas dedicadas para quando não há posts publicados
+- **Fundo por categoria** — cada post exibe uma imagem de capa associada à sua categoria
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+---
 
-```
+## Tipagem de ponta a ponta
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+O diferencial do projeto é o uso de **TypeScript nas duas pontas**. No frontend,
+isso se traduz em:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- **Tipos derivados de constantes** — as categorias do blog são declaradas uma
+  única vez com `as const`, e o tipo `Category` é derivado do próprio array
+  (`typeof CATEGORIES[number]`), evitando duplicação entre valor e tipo.
+- **Contrato de dados tipado** — as interfaces `PostPreview` e `PostFull`
+  descrevem o formato dos posts; `PostFull` estende `PostPreview`, garantindo
+  uma única fonte de verdade entre a lista e o detalhe.
+- **Fronteira da API tipada** — as funções de requisição declaram o tipo de
+  retorno, propagando o contrato até os componentes.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+---
 
-```
+## Estado global (Context API tipada)
+
+O acesso aos posts é centralizado em um **contexto tipado** (`PostsContext`):
+
+- O `PostsProvider` busca os posts na API ao montar (`useEffect`) e os
+  distribui via contexto.
+- Um **hook de acesso próprio** (`usePosts`) encapsula o `useContext` e lança
+  um erro explícito caso seja usado fora do Provider, permitindo ao
+  TypeScript estreitar o tipo (`narrowing`) e eliminar o caso nulo.
+
+---
+
+## Tecnologias e técnicas utilizadas
+
+- **React** — interface com componentes funcionais e hooks
+- **TypeScript** — tipagem estática em toda a aplicação
+- **React Router DOM** — navegação entre páginas
+- **Vite** — bundler e servidor de desenvolvimento
+- **CSS / BEM** — estilização modular, um arquivo de estilo por componente
+- **Context API** — estado global tipado para os posts
+- **Fetch API** — requisições assíncronas à API própria, sem bibliotecas externas
+
+### Estrutura e boas práticas
+
+- Componentes organizados por função (páginas, componentes, contextos, utilitários)
+- Requisições de API isoladas em arquivo próprio (`utils/api.ts`)
+- Tipos e constantes em arquivos dedicados (`utils/types.ts`, `utils/consts.ts`)
+- Lógica de formatação isolada em utilitário (`utils/utils.ts`)
+- HTML semântico e classes nomeadas segundo a especificação BEM
+- Estados de vazio tratados na interface
+
+---
+
+## Melhorias futuras
+
+- **Página de post individual** — consumo do endpoint de detalhe por slug (já disponível na API)
+- **Validação de dados na fronteira** — validação em runtime da resposta da API (ex.: Zod), substituindo a tipagem por afirmação
+- **Filtro conectado à listagem** — aplicar o estado de filtro sobre os posts renderizados
+
+---
+
+## Autor
+
+Rafael Guanciale Nacarato
