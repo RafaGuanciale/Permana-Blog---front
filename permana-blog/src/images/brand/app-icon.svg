@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <rect width="512" height="512" rx="114" fill="#F1E0C5"></rect>
+  <circle cx="256" cy="256" r="170" fill="#71816D"></circle>
+  <circle cx="256" cy="256" r="146" fill="none" stroke="#F1E0C5" stroke-width="3" opacity="0.42"></circle>
+  <text x="256" y="321" text-anchor="middle" fill="#F1E0C5" font-family="Cinzel, Georgia, &#39;Times New Roman&#39;, serif" font-weight="600" font-size="180">P</text>
+</svg>

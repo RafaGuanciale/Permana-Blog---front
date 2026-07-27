@@ -1,0 +1,139 @@
+.blog__list__bar {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 8px 56px 4px;
+  border-top: 1px solid rgba(52, 42, 33, 0.1);
+}
+.blog__list__bar-title {
+  font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 26px;
+  margin: 20px 0;
+  color: #5e6b5a;
+}
+.blog__list__filters {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.blog__list__filter {
+  font-family: "Montserrat", sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: transparent;
+  border: 1px solid rgba(52, 42, 33, 0.1);
+  color: #4a3d31;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+.blog__list__filter--active {
+  background: var(--color-green);
+  color: var(--color-champagne);
+  border-color: var(--color-green);
+}
+.blog__list__items {
+  padding: 0 56px 8px;
+}
+.blog__list__item {
+  display: grid;
+  grid-template-columns: 130px 130px 1fr 170px;
+  gap: 32px;
+  padding: 28px 0;
+  border-top: 1px solid rgba(52, 42, 33, 0.1);
+  align-items: center;
+}
+.blog__list__item-category {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-green);
+  margin: 0;
+}
+.blog__list__item-media {
+  width: 130px;
+  height: 96px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: repeating-linear-gradient(
+    -45deg,
+    #e7d2b0 0 10px,
+    var(--color-champagne) 10px 20px
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.blog__list__item-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.blog__list__item-media-ph {
+  font-family: ui-monospace, monospace;
+  font-size: 10px;
+  color: #8a7b66;
+  background: var(--color-off-white);
+  padding: 2px 8px;
+  border-radius: 999px;
+  text-align: center;
+}
+.blog__list__item-title {
+  font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+  font-weight: 400;
+  font-style: italic;
+  font-size: 26px;
+  line-height: 1.18;
+  margin: 0 0 8px;
+}
+.blog__list__item-link {
+  color: var(--color-bistre);
+  text-decoration: none;
+}
+.blog__list__item-link:hover {
+  color: #5e6b5a;
+}
+.blog__list__item-excerpt {
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 1.55;
+  color: #4a3d31;
+  margin: 0;
+  max-width: 56ch;
+}
+.blog__list__item-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+  text-align: right;
+  font-size: 12px;
+  color: #8a7b66;
+}
+/* estado vazio */
+.blog__list__empty {
+  margin: 0 56px;
+  border-top: 1px solid rgba(52, 42, 33, 0.1);
+  padding: 56px 0;
+  text-align: center;
+}
+.blog__list__empty-title {
+  font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 24px;
+  margin: 0 0 8px;
+  color: var(--color-bistre);
+}
+.blog__list__empty-text {
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 1.55;
+  color: #8a7b66;
+  margin: 0;
+}

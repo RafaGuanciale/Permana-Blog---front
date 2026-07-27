@@ -1,0 +1,9 @@
+/* Main Page */
+@import url("./styles/page.css");
+@import url("./styles/Blog.css");
+
+/* Componentes */
+@import url("./styles/BlogHeader.css");
+@import url("./styles/BlogFooter.css");
+@import url("./styles/BlogHighlight.css");
+@import url("./styles/BlogList.css");

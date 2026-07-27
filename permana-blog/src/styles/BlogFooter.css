@@ -1,0 +1,63 @@
+.blog__footer {
+  background: var(--color-bistre);
+  color: var(--color-champagne);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  padding: 40px 56px;
+  margin-top: auto;
+}
+.blog__footer__logo {
+  font-family: "Cinzel", "Playfair Display", Georgia, serif;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  font-size: 16px;
+  color: var(--color-champagne);
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+.blog__footer__logo-coin {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--color-champagne);
+  color: var(--color-green);
+  font-weight: 700;
+  font-size: 17px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 8px;
+}
+.blog__footer__logo-tag {
+  font-family:
+    "Montserrat",
+    -apple-system,
+    "Segoe UI",
+    Helvetica,
+    Arial,
+    sans-serif;
+  font-weight: 300;
+  letter-spacing: 0.3em;
+  margin-left: 10px;
+  color: rgba(241, 224, 197, 0.6);
+  font-size: 12px;
+}
+.blog__footer__links {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  font-size: 12px;
+}
+.blog__footer__link {
+  color: rgba(241, 224, 197, 0.75);
+  text-decoration: none;
+}
+.blog__footer__link:hover {
+  color: var(--color-champagne);
+}
+.blog__footer__copy {
+  color: rgba(241, 224, 197, 0.4);
+}

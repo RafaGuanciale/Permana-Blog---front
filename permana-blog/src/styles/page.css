@@ -1,0 +1,44 @@
+* {
+  margin: 0;
+}
+
+body {
+  min-height: 100vh;
+  position: relative;
+}
+.page {
+  min-height: 100vh;
+  display: flex;
+  background: var(--color-champagne);
+  flex-direction: column;
+}
+
+.page__content {
+  flex: 1;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-y: scroll;
+}
+
+.body__no-scroll {
+  overflow: hidden;
+}
+
+#root {
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  line-height: 20px;
+  position: relative;
+}
+
+:root {
+  --color-champagne: #f1e0c5;
+  --color-green: #71816d;
+  --color-bistre: #342a21;
+  --color-khaki: #c9b79c;
+  --color-blush: #da667b;
+  --color-off-white: #fafaf8;
+}
