@@ -1,49 +1,58 @@
 import { usePosts } from "../../contexts/PostContext";
+import { formatData } from "../../utils/utils";
+import { CategoriesBackgrounds } from "../../utils/consts";
 
 function BlogHighlight() {
   const { posts } = usePosts();
+  const highlight = posts[0];
 
-  return posts.length > 0 ? (
+  if (!highlight) {
+    return (
+      <section className="blog__highlight blog__highlight--empty">
+        <div className="blog__highlight__empty">
+          <p className="blog__highlight__empty-eyebrow">Em destaque</p>
+          <h1 className="blog__highlight__empty-title">
+            Nenhum post em destaque ainda
+          </h1>
+          <p className="blog__highlight__empty-text">
+            As publicações mais relevantes aparecerão aqui conforme o blog for
+            sendo atualizado.
+          </p>
+        </div>
+      </section>
+    );
+  }
+
+  const categoria = highlight.category
+
+  return (
     <section className="blog__highlight">
       <div className="blog__highlight__media">
-        {/* <img className="blog__highlight__img" src={...} alt={...} /> */}
-        <span className="blog__highlight__media-ph">
-          capa · natureza-morta com frascos
-        </span>
+        <img
+          className="blog__highlight__img"
+          src={CategoriesBackgrounds[categoria]}
+          alt={categoria}
+        />
       </div>
 
       <div className="blog__highlight__body">
-        <p className="blog__highlight__eyebrow">Em destaque · Guias · 12 min</p>
-        <h1 className="blog__highlight__title">
-          Famílias olfativas: um mapa para se orientar
-        </h1>
-        <p className="blog__highlight__excerpt">
-          Âmbar, chipre, fougère — os nomes intimidam, mas o território é
-          simples. Um guia para ler qualquer perfume pela família, antes mesmo
-          do primeiro borrifo.
+        <p className="blog__highlight__eyebrow">
+          Em destaque · {highlight.category} · {highlight.reading_time} min
         </p>
+        <h1 className="blog__highlight__title">{highlight.title}</h1>
+        <p className="blog__highlight__excerpt">{highlight.preview}</p>
         <div className="blog__highlight__meta">
           <span className="blog__highlight__meta-author">
-            Por Equipe Permana
+            Por {highlight.author}
           </span>
           <i className="blog__highlight__meta-sep">·</i>
-          <span className="blog__highlight__meta-date">14 jul 2026</span>
+          <span className="blog__highlight__meta-date">
+            {formatData(highlight.published_at)}
+          </span>
         </div>
         <button className="blog__highlight__btn-primary" type="button">
           Ler o artigo
         </button>
-      </div>
-    </section>
-  ) : (
-    <section className="blog__highlight blog__highlight--empty">
-      <div className="blog__highlight__empty">
-        <p className="blog__highlight__empty-eyebrow">Em destaque</p>
-        <h1 className="blog__highlight__empty-title">
-          Nenhum post em destaque ainda
-        </h1>
-        <p className="blog__highlight__empty-text">
-          As publicações mais relevantes aparecerão aqui conforme o blog for sendo atualizado.
-        </p>
       </div>
     </section>
   );

@@ -1,6 +1,9 @@
 import { useState } from "react";
-import { CATEGORIES, type Category } from "../../utils/consts";
+import { CATEGORIES } from "../../utils/consts";
+import type { Category } from "../../utils/types";
 import { usePosts } from "../../contexts/PostContext";
+import { formatData } from "../../utils/utils";
+import { CategoriesBackgroundsSmall } from "../../utils/consts";
 type BlogFilter = Category | "tudo";
 
 function BlogList() {
@@ -34,29 +37,29 @@ function BlogList() {
 
       {posts.length > 0 ? (
         <div className="blog__list__items">
-          {/* map dos posts aqui — repita o bloco .blog__list__item abaixo */}
-          <article className="blog__list__item">
-            <p className="blog__list__item-category">Guias</p>
-            <div className="blog__list__item-media">
-              {/* <img className="blog__list__item-img" src={...} alt={...} /> */}
-              <span className="blog__list__item-media-ph">frasco âmbar</span>
-            </div>
-            <div className="blog__list__item-body">
-              <h3 className="blog__list__item-title">
-                <a className="blog__list__item-link" href="#">
-                  Sillage, projeção e fixação
-                </a>
-              </h3>
-              <p className="blog__list__item-excerpt">
-                Três palavras que todo mundo usa e quase ninguém define igual.
-                Colocamos ordem na conversa.
-              </p>
-            </div>
-            <div className="blog__list__item-meta">
-              <span className="blog__list__item-author">Equipe Permana</span>
-              <span className="blog__list__item-date">15 jul · 9 min</span>
-            </div>
-          </article>
+          {posts.map((post) => (
+            <article key={post.id} className="blog__list__item">
+              <p className="blog__list__item-category">{post.category}</p>
+              <div className="blog__list__item-media">
+                <img className="blog__list__item-img" src={CategoriesBackgroundsSmall[post.category]} alt={post.category} />
+                {/* <span className="blog__list__item-media-ph">frasco âmbar</span> */}
+              </div>
+              <div className="blog__list__item-body">
+                <h3 className="blog__list__item-title">
+                  <a className="blog__list__item-link" href="#">
+                    {post.title}
+                  </a>
+                </h3>
+                <p className="blog__list__item-excerpt">{post.preview}</p>
+              </div>
+              <div className="blog__list__item-meta">
+                <span className="blog__list__item-author">{post.author}</span>
+                <span className="blog__list__item-date">
+                  {formatData(post.published_at)} · {post.reading_time} min
+                </span>
+              </div>
+            </article>
+          ))}
         </div>
       ) : (
         <div className="blog__list__empty">

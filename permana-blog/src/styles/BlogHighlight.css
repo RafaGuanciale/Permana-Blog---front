@@ -6,7 +6,8 @@
   align-items: center;
 }
 .blog__highlight__media {
-  height: 420px;
+  max-height: 420px;
+  max-width: 640px;
   border-radius: 18px;
   overflow: hidden;
   background: repeating-linear-gradient(
