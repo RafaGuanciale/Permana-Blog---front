@@ -12,6 +12,11 @@ function BlogList() {
   const { posts } = usePosts();
   const postList = posts.slice(1);
 
+  const postListFiltered = postList.filter((post) => {
+    if (filterActive === "tudo") return true;
+    return post.category === filterActive;
+  });
+
   return (
     <section className="blog__list">
       <div className="blog__list__bar">
@@ -37,9 +42,9 @@ function BlogList() {
         </div>
       </div>
 
-      {posts.length > 0 ? (
+      {postListFiltered.length > 0 ? (
         <div className="blog__list__items">
-          {postList.map((post) => (
+          {postListFiltered.map((post) => (
             <article key={post.id} className="blog__list__item">
               <p className="blog__list__item-category">{post.category}</p>
               <div className="blog__list__item-media">
@@ -69,11 +74,18 @@ function BlogList() {
             </article>
           ))}
         </div>
-      ) : (
+      ) : filterActive === "tudo" ? (
         <div className="blog__list__empty">
           <p className="blog__list__empty-title">Nada por aqui ainda</p>
           <p className="blog__list__empty-text">
             Nenhuma nota publicada nesta seção. Volte em breve.
+          </p>
+        </div>
+      ) : (
+        <div className="blog__list__empty">
+          <p className="blog__list__empty-title">Nenhuma nota nesta categoria</p>
+          <p className="blog__list__empty-text">
+            Ainda não há publicações em {filterActive}. Experimente outro filtro.
           </p>
         </div>
       )}
