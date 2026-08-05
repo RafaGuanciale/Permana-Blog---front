@@ -4,7 +4,11 @@ function BlogHeader() {
   return (
     <header className="blog__header">
       <div className="blog__header__logo">
-        <img src={Coin} alt="" className="blog__header__logo-coin" />
+        <img
+          src={Coin}
+          alt=""
+          className="blog__header__logo-coin"
+        />
         ERMANA
         <span className="blog__header__logo-tag">BLOG</span>
       </div>
@@ -18,9 +22,14 @@ function BlogHeader() {
         />
       </form>
 
-      <button className="blog__header__btn-green" type="button">
+      <a
+        className="blog__header__btn-green"
+        type="button"
+        href={"https://www.permana.com.br/login"}
+        target="_blank"
+      >
         Abrir o app →
-      </button>
+      </a>
     </header>
   );
 }

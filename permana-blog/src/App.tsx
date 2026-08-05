@@ -2,6 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import Blog from "./pages/Blog";
 import BlogHeader from "./components/Header/BlogHeader.tsx";
 import BlogFooter from "./components/Footer/BlogFooter";
+import PostPage from "./components/Post/PostPage.tsx";
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
       <BlogHeader />
       <Routes>
         <Route path="/" element={<Blog />} />
+        <Route path="/post/:slug" element={<PostPage />}/>
       </Routes>
       <BlogFooter />
     </div>

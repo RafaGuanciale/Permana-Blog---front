@@ -4,12 +4,13 @@ import type { Category } from "../../utils/types";
 import { usePosts } from "../../contexts/PostContext";
 import { formatData } from "../../utils/utils";
 import { CategoriesBackgroundsSmall } from "../../utils/consts";
+import { Link } from "react-router-dom";
 type BlogFilter = Category | "tudo";
 
 function BlogList() {
   const [filterActive, setFilterActive] = useState<BlogFilter>("tudo");
   const { posts } = usePosts();
-  const postList = posts.slice(1)
+  const postList = posts.slice(1);
 
   return (
     <section className="blog__list">
@@ -42,13 +43,20 @@ function BlogList() {
             <article key={post.id} className="blog__list__item">
               <p className="blog__list__item-category">{post.category}</p>
               <div className="blog__list__item-media">
-                <img className="blog__list__item-img" src={CategoriesBackgroundsSmall[post.category]} alt={post.category} />
+                <img
+                  className="blog__list__item-img"
+                  src={CategoriesBackgroundsSmall[post.category]}
+                  alt={post.category}
+                />
               </div>
               <div className="blog__list__item-body">
                 <h3 className="blog__list__item-title">
-                  <a className="blog__list__item-link" href="#">
+                  <Link
+                    className="blog__list__item-link"
+                    to={`/post/${post.slug}`}
+                  >
                     {post.title}
-                  </a>
+                  </Link>
                 </h3>
                 <p className="blog__list__item-excerpt">{post.preview}</p>
               </div>

@@ -19,6 +19,7 @@
 .blog__header__logo-coin {
   width: 34px;
   height: 34px;
+  cursor: pointer;
 }
 .blog__header__logo-tag {
   font-family:
@@ -94,6 +95,7 @@
   font-weight: 500;
   font-size: 13px;
   cursor: pointer;
+  text-decoration: none;
 }
 .blog__header__btn-green:hover {
   background: #5e6b5a;
