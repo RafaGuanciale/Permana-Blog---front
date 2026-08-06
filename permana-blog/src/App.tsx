@@ -2,7 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import Blog from "./pages/Blog";
 import BlogHeader from "./components/Header/BlogHeader.tsx";
 import BlogFooter from "./components/Footer/BlogFooter";
-import PostPage from "./components/Post/PostPage.tsx";
+import PostPage from "./pages/PostPage.tsx";
 
 function App() {
   return (

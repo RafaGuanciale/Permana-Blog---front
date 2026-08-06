@@ -1,6 +1,7 @@
 import { usePosts } from "../../contexts/PostContext";
 import { formatData } from "../../utils/utils";
 import { CategoriesBackgrounds } from "../../utils/consts";
+import { Link } from "react-router-dom";
 
 function BlogHighlight() {
   const { posts } = usePosts();
@@ -23,7 +24,7 @@ function BlogHighlight() {
     );
   }
 
-  const categoria = highlight.category
+  const categoria = highlight.category;
 
   return (
     <section className="blog__highlight">
@@ -50,9 +51,12 @@ function BlogHighlight() {
             {formatData(highlight.published_at)}
           </span>
         </div>
-        <button className="blog__highlight__btn-primary" type="button">
+        <Link
+          className="blog__highlight__btn-primary"
+          to={`/post/${highlight.slug}`}
+        >
           Ler o artigo
-        </button>
+        </Link>
       </div>
     </section>
   );

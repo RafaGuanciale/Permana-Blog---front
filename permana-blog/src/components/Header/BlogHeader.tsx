@@ -1,9 +1,10 @@
 import Coin from "../../images/brand/logo-coin/permana-coin-default-176.png";
+import { Link } from "react-router-dom";
 
 function BlogHeader() {
   return (
     <header className="blog__header">
-      <div className="blog__header__logo">
+      <Link to={"/"} className="blog__header__logo">
         <img
           src={Coin}
           alt=""
@@ -11,7 +12,7 @@ function BlogHeader() {
         />
         ERMANA
         <span className="blog__header__logo-tag">BLOG</span>
-      </div>
+      </Link>
 
       <form className="blog__header__search">
         <span className="blog__header__search-icon">⌕</span>

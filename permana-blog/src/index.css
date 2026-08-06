@@ -7,3 +7,8 @@
 @import url("./styles/BlogFooter.css");
 @import url("./styles/BlogHighlight.css");
 @import url("./styles/BlogList.css");
+
+/* Article */
+@import url("./styles/Article/ArticleHeader.css");
+@import url("./styles/Article/ArticleBody.css");
+@import url("./styles/Article/ArticleCTA.css");
