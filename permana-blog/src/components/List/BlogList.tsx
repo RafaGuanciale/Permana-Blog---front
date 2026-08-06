@@ -1,21 +1,17 @@
 import { useState } from "react";
-import { CATEGORIES } from "../../utils/consts";
-import type { Category } from "../../utils/types";
+import { CATEGORIES, CategoriesBackgroundsSmall } from "../../utils/consts";
 import { usePosts } from "../../contexts/PostContext";
 import { formatData } from "../../utils/utils";
-import { CategoriesBackgroundsSmall } from "../../utils/consts";
 import { Link } from "react-router-dom";
-type BlogFilter = Category | "tudo";
+import type { BlogFilter } from "../../utils/types";
+import { getPostListFiltered } from "../../utils/utils";
 
 function BlogList() {
   const [filterActive, setFilterActive] = useState<BlogFilter>("tudo");
   const { posts } = usePosts();
   const postList = posts.slice(1);
 
-  const postListFiltered = postList.filter((post) => {
-    if (filterActive === "tudo") return true;
-    return post.category === filterActive;
-  });
+  const postListFiltered = getPostListFiltered(postList, filterActive);
 
   return (
     <section className="blog__list">
@@ -83,9 +79,12 @@ function BlogList() {
         </div>
       ) : (
         <div className="blog__list__empty">
-          <p className="blog__list__empty-title">Nenhuma nota nesta categoria</p>
+          <p className="blog__list__empty-title">
+            Nenhuma nota nesta categoria
+          </p>
           <p className="blog__list__empty-text">
-            Ainda não há publicações em {filterActive}. Experimente outro filtro.
+            Ainda não há publicações em {filterActive}. Experimente outro
+            filtro.
           </p>
         </div>
       )}

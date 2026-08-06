@@ -19,3 +19,5 @@ export interface PostPreview {
 export interface PostFull extends PostPreview {
   text: string;
 }
+
+export type BlogFilter = Category | "tudo";
