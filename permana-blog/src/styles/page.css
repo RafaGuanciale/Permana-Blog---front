@@ -41,4 +41,11 @@ html {
   --color-khaki: #c9b79c;
   --color-blush: #da667b;
   --color-off-white: #fafaf8;
+
+  --text-strong: var(--color-bistre);
+  --text-body: color-mix(in srgb, var(--color-bistre) 82%, transparent);
+  --text-muted: color-mix(in srgb, var(--color-bistre) 55%, transparent);
+  --font-display: "Playfair Display", serif;
+  --color-green-soft: color-mix(in srgb, var(--color-green) 70%, var(--color-champagne));
+  --font-sans: "Montserrat", sans-serif;
 }

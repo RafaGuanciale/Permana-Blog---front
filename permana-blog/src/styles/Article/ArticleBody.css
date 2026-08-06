@@ -1,17 +1,105 @@
-/* ArticleBody — coluna editorial estreita, só texto. */
-.article__body{max-width:680px;margin:0 auto;padding:52px 32px 0}
-.article__body>*{margin:0}
-.article__body>*+*{margin-top:26px}
-.article__lead{font-weight:300;font-size:21px;line-height:1.6;color:var(--text-strong)}
-.article__lead::first-letter{font-family:var(--font-display);font-weight:600;font-size:74px;line-height:.72;float:left;margin:8px 14px 0 0;color:var(--color-green)}
-.article__body p{font-weight:300;font-size:18px;line-height:1.75;color:var(--text-body)}
-.article__body a{color:var(--color-green-deep);text-decoration:none;border-bottom:1px solid rgba(94,107,90,.35)}
-.article__body a:hover{border-bottom-color:var(--color-green-deep)}
-.article__body strong{font-weight:600;color:var(--text-strong)}
-.article__body em{font-style:italic}
-.article__h2{font-family:var(--font-display);font-weight:700;font-size:30px;line-height:1.15;color:var(--text-strong);margin-top:52px !important;text-wrap:pretty}
-.article__h2+p{margin-top:18px}
-.article__body ul{list-style:none;padding:0}
-.article__body ul li{position:relative;padding-left:26px;font-weight:300;font-size:18px;line-height:1.7;color:var(--text-body)}
-.article__body ul li+li{margin-top:12px}
-.article__body ul li::before{content:"";position:absolute;left:4px;top:13px;width:7px;height:7px;border-radius:50%;background:var(--color-green)}
+/* ArticleBody — coluna editorial estreita, conteúdo vindo do ReactMarkdown.
+   O Markdown gera HTML sem classes, então tudo é estilizado por ELEMENTO
+   dentro de .article__body, nunca por classe. */
+
+.article__body {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 52px 32px 0;
+}
+
+/* espaçamento vertical uniforme entre blocos */
+.article__body > * {
+  margin: 0;
+}
+.article__body > * + * {
+  margin-top: 26px;
+}
+
+/* parágrafo padrão */
+.article__body p {
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 1.75;
+  color: color-mix(in srgb, var(--color-bistre) 82%, transparent);
+}
+
+/* LEAD — primeiro parágrafo do post: maior e mais leve */
+.article__body p:first-of-type {
+  font-weight: 300;
+  font-size: 21px;
+  line-height: 1.6;
+  color: var(--color-bistre);
+}
+
+/* CAPITULAR — primeira letra do primeiro parágrafo */
+.article__body p:first-of-type::first-letter {
+  font-family: "Playfair Display", serif;
+  float: left;
+  color: var(--color-green);
+  margin: 8px 14px 0 0;
+  font-size: 74px;
+  font-weight: 600;
+  line-height: 0.72;
+}
+
+/* subtítulos de seção (## no Markdown → <h2>) */
+.article__body h2 {
+  font-family: "Playfair Display", serif;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 1.15;
+  color: var(--color-bistre);
+  margin-top: 52px;
+  text-wrap: pretty;
+}
+.article__body h2 + p {
+  margin-top: 18px;
+}
+
+/* links */
+.article__body a {
+  color: var(--color-green);
+  text-decoration: none;
+  border-bottom: 1px solid
+    color-mix(in srgb, var(--color-green) 35%, transparent);
+}
+.article__body a:hover {
+  border-bottom-color: var(--color-green);
+}
+
+/* ênfases */
+.article__body strong {
+  font-weight: 600;
+  color: var(--color-bistre);
+}
+.article__body em {
+  font-style: italic;
+}
+
+/* listas (- no Markdown → <ul><li>) */
+.article__body ul {
+  list-style: none;
+  padding: 0;
+}
+.article__body ul li {
+  position: relative;
+  padding-left: 26px;
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 1.7;
+  color: color-mix(in srgb, var(--color-bistre) 82%, transparent);
+}
+.article__body ul li + li {
+  margin-top: 12px;
+}
+.article__body ul li::before {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 13px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--color-green);
+}

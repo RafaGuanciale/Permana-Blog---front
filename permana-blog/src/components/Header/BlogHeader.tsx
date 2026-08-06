@@ -14,14 +14,14 @@ function BlogHeader() {
         <span className="blog__header__logo-tag">BLOG</span>
       </Link>
 
-      <form className="blog__header__search">
+      {/* <form className="blog__header__search">
         <span className="blog__header__search-icon">⌕</span>
         <input
           className="blog__header__search-input"
           type="search"
           placeholder="Buscar notas, famílias, marcas…"
         />
-      </form>
+      </form> */}
 
       <a
         className="blog__header__btn-green"

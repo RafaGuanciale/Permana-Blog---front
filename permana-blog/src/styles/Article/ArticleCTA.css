@@ -1,8 +1,61 @@
-/* ArticleCTA — banda bistre de fechamento com moeda-marca-d'água. */
-.article__cta{max-width:1000px;margin:72px auto 0;padding:0 56px}
-.article__cta-inner{background:var(--color-bistre);border-radius:22px;padding:56px 48px;text-align:center;color:var(--color-champagne);position:relative;overflow:hidden}
-.article__cta-ghost{position:absolute;width:340px;height:340px;border-radius:50%;background:rgba(241,224,197,.05);right:-110px;bottom:-150px;pointer-events:none}
-.article__cta-eyebrow{position:relative;font-size:11px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--color-green-soft);margin:0 0 14px}
-.article__cta-title{position:relative;font-family:var(--font-display);font-style:italic;font-weight:500;font-size:34px;line-height:1.15;margin:0 auto;max-width:20ch}
-.article__cta-btn{position:relative;display:inline-block;margin-top:28px;padding:13px 30px;background:var(--color-champagne);color:var(--color-bistre);border:none;border-radius:999px;font-family:var(--font-sans);font-weight:500;font-size:14px;cursor:pointer;text-decoration:none}
-.article__cta-btn:hover{background:#fff}
+.article__cta {
+  max-width: 1000px;
+  margin: 52px auto;
+  padding: 0 56px;
+}
+.article__cta-inner {
+  background: var(--color-bistre);
+  border-radius: 22px;
+  padding: 56px 48px;
+  text-align: center;
+  color: var(--color-champagne);
+  position: relative;
+  overflow: hidden;
+}
+.article__cta-ghost {
+  position: absolute;
+  width: 340px;
+  height: 340px;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--color-champagne) 5%, transparent);
+  right: -110px;
+  bottom: -150px;
+  pointer-events: none;
+}
+.article__cta-eyebrow {
+  position: relative;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-green-soft);
+  margin: 0 0 14px;
+}
+.article__cta-title {
+  position: relative;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 34px;
+  line-height: 1.15;
+  margin: 0 auto;
+  max-width: 20ch;
+}
+.article__cta-btn {
+  position: relative;
+  display: inline-block;
+  margin-top: 28px;
+  padding: 13px 30px;
+  background: var(--color-champagne);
+  color: var(--color-bistre);
+  border: none;
+  border-radius: 999px;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+  text-decoration: none;
+}
+.article__cta-btn:hover {
+  background: var(--color-off-white);
+}
