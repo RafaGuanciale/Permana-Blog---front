@@ -1,29 +1,30 @@
-function ArticleHeader({
-  category = "Guias",
-  readingTime = "12 min de leitura",
-  title = "Famílias olfativas: um mapa para se orientar",
-  dek = "Âmbar, chipre, fougère — os nomes intimidam, mas o território é simples. Aprenda a ler qualquer perfume pela família.",
-  author = "Equipe Permana",
-  date = "14 jul 2026",
-} = {}) {
+import { Link } from "react-router-dom";
+import type { PostFull } from "../../utils/types";
+import { formatData } from "../../utils/utils";
+
+interface articleHeaderProps {
+  post: PostFull;
+}
+
+function ArticleHeader({ post }: articleHeaderProps) {
   return (
     <header className="article__header">
       <nav className="article__crumbs">
-        <a href="#">Blog</a>
+        <Link to={"/"}>Blog</Link>
         <span className="article__crumbs-sep">›</span>
-        <a href="#">{category}</a>
+        <Link to={"/"}>{post.category}</Link>
       </nav>
       <p className="article__eyebrow">
-        {category} · {readingTime}
+        {post.category} · {`${post.reading_time} min de leitura`}
       </p>
-      <h1 className="article__title">{title}</h1>
-      <p className="article__dek">{dek}</p>
+      <h1 className="article__title">{post.title}</h1>
+      <p className="article__dek">{post.preview}</p>
       <div className="article__byline">
         <span className="article__avatar">P</span>
         <span className="article__byline-txt">
-          <span className="article__byline-name">Por {author}</span>
+          <span className="article__byline-name">Por {post.author}</span>
           <br />
-          <span className="article__byline-sub">{date}</span>
+          <span className="article__byline-sub">{formatData(post.published_at)}</span>
         </span>
       </div>
       <div className="article__rule" />

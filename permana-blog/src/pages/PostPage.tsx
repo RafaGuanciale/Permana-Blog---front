@@ -13,13 +13,11 @@ function PostPage() {
     getPostBySlug(slug).then(setPost);
   }, [slug]);
 
-  if (!post) return;
+  if (!post) {
+    return <div>Loading...</div>;
+  }
 
-  return (
-    <>
-      <Article />
-    </>
-  );
+  return <Article post={post} />;
 }
 
 export default PostPage;
